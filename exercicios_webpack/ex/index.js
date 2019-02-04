@@ -1,2 +1,4 @@
-const logger = require('./logger')
-logger.info("Webpack using COMMONJS system module!!!!")
+import Person from './person.js'
+
+const person = new Person("Teste")
+console.log(person.toString())

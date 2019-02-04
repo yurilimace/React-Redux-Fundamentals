@@ -1,0 +1,55 @@
+webpack
+
+tem como objetivo modularizar seu projeto,seperando arquivos que poderiam estar
+juntos em pequenos modulos.
+Descrito como um bundler ou empacotador de modulos JS.
+
+Como utilizar
+OBS: depois de ter inicializado o projeto com npm init -y (comando que cria as dependencias do projeto)
+instale o webpack via npm com o comando : npm install --save-dev webpack,
+no comando acima esta incluso o webpack dev server um servidor embutido do webpack 
+
+comando versão curso da udemy : npm i --save-dev webpack@1.14.0 webpack-dev-server@1.16.2
+
+fazendo a verificação da instalação digite o comando : ./node_modules/.bin/webpack no terminal se a instalação
+ocorreu de maneira correta deverá exibir uma mensagem informando que não foi encontrado o arquivo de configuração
+webpack.
+
+Criando o arquivo de Configuração webpack
+por convenção o arquivo de configuração deve ser chamar webpack.config.js e deve ser salvo na raiz do projeto(vide
+o exemplo da aula sobre webpack no github).
+
+Após a criação do arquivo de configuração webpack precisamos definir o entry point(vide Conceitos sobre webpack).
+Exemplo 
+	module.exports = {
+		entry:{
+		   app: './index.js'
+		}
+	};
+
+Neste exemplos estamos definindo que minha aplicação irá começar pelo arquivo index.js e que a partir dele o webpack
+montará o grafo das dependencias do app. Podemos ter mais de um 1 Entry point.
+
+
+Após realizar o enpacotamento dos arquivos o webpack precisa gerar um output com um arquivo empacotado e pronto para o build 
+no browser veja o exemplo de criação de arquivo output
+Exemplo
+	output: {
+        filename: '[name].bundle.js',
+        path: path.join(__dirname, 'dist')
+    }
+};
+	
+
+Com isso o webpack irá ler os arquivos entry gerar sua arvore de dependencia, e todo codigo será empacotado em um arquivo final
+que será executado
+
+
+Há um exemplo funcionando no seguinte link https://github.com/yurilimace/React-Redux-Fundamentals
+
+Conceitos sobre webpack
+Entry Point
+o webpack gera um grafo contendo as dependencias da aplicação e o ponto inicial desse grafo é o entry point é ele que 
+vai informar ao webpack onde começar e por onde seguir por esse grafo contendo as dependencias do app.
+
+Loaders			

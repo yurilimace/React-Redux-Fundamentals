@@ -4,5 +4,5 @@ function info(text){
     console.log(`INFO: ${text}`)
 }
 
-//exporting object using ECMAscript 15 pattern
+//exporting object using Commonjs pattern
 module.exports = {info}

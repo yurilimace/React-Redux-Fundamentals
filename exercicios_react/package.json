@@ -2,9 +2,9 @@
   "name": "exercicios_react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./ex/index.jsx",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "webpack-dev-server --progress --colors --inline --hot"
   },
   "keywords": [],
   "author": "",

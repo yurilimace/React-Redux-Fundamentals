@@ -12,6 +12,10 @@ module.exports ={
         contentBase: './public'
     },
 
+    resolve: {
+        extensions: ['','.js','.jsx']
+    },
+
     module: {
         loaders: [{
             //loader that recognise react code

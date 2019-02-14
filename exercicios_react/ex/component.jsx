@@ -1,5 +1,7 @@
 import React from 'react'
 
- export default function (){
-    return <h1> First Component </h1>
-}
+//create component with arrow function
+ export default(props) => (
+     <h1> {props.value} </h1> 
+ )
+    

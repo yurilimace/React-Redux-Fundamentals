@@ -1,5 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Component from './component'
+import First,{Second} from './component'
 
-ReactDOM.render(<Component  value="SHOW!!!"/>,document.getElementById('app'))
+ReactDOM.render(
+    //React don't render ungroup components
+    <div>
+        <First />
+        <Second />
+    </div>,
+    document.getElementById('app')
+)

@@ -1,7 +1,13 @@
 import React from 'react'
 
-//create component with arrow function
- export default(props) => (
-     <h1> {props.value} </h1> 
- )
-    
+//two aways to export a component in react
+
+export default  props =>(
+    <h1> First Component </h1>
+)
+
+export const Second = props =>(
+    <h1>Second Component</h1>
+)
+
+

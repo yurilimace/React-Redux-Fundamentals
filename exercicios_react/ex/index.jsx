@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Famiy from './family'
+import Family from './family'
+import Member from './member'
 
 ReactDOM.render(
     //React don't render ungroup components
-    <div>
-        <Famiy />
-    </div>,
+    <Family>
+        <Member name = "John" lastname = "acer"/>
+        <Member name = "Mary" lastname = "acer"/>
+    </Family>,
     document.getElementById('app')
 )

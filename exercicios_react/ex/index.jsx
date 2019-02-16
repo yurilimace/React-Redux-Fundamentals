@@ -1,12 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import First,{Second} from './component'
+import Famiy from './family'
 
 ReactDOM.render(
     //React don't render ungroup components
     <div>
-        <First />
-        <Second />
+        <Famiy />
     </div>,
     document.getElementById('app')
 )

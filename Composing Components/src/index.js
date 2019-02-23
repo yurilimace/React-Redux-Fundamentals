@@ -5,5 +5,3 @@ import App from './Composing'
 
 
 ReactDOM.render(<App />, document.getElementById('root'));
-
-

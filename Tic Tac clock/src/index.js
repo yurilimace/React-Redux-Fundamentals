@@ -5,6 +5,6 @@ import './index.css';
 import Tick from './Tick'
 
 setInterval(() => {
-    ReactDOM.render(<Tick />,document.getElementById('root'));
+    ReactDOM.render(<Tick date = {new Date()}/>,document.getElementById('root'));
 }, 1000);
 

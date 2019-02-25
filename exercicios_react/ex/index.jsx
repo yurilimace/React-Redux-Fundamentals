@@ -5,9 +5,10 @@ import Member from './member'
 
 ReactDOM.render(
     //React don't render ungroup components
-    <Family>
-        <Member name = "John" lastname = "acer"/>
-        <Member name = "Mary" lastname = "acer"/>
+    <Family lastname='Acer'>
+        <Member name = "John" />
+        <Member name = "Ned"/>
+        <Member name = "Sansa"/>
     </Family>,
     document.getElementById('app')
 )

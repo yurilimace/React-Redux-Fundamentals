@@ -15,7 +15,7 @@ module.exports = {
     resolve:{
         extension:['','.js','.jsx'],
         alias:{
-            module: __dirname + 'node_module'
+            module: __dirname + '/node_modules'
         }
     },
     plugins:[
@@ -23,9 +23,9 @@ module.exports = {
     ],
     module:{
         loaders:[{
-            test: /.js[x]?$ /,
+            test: /.js[x]?$/,
             loader: 'babel-loader',
-            exclude: /node_module/,
+            exclude: /node_modules/,
             query: {
                 presets:['es2015','react'],
                 plugins:['transform-object-rest-spread']

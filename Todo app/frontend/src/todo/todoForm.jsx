@@ -6,7 +6,7 @@ import Iconbutton from '../template/iconbutton.jsx'
 export default props =>(
     <div role ='form' className = 'todoForm'>
         <Grid cols = '12 9 8' >
-            <input id = 'descpription' className = 'form-control' placeholder = 'Add a task'></input>
+            <input id = 'descpription' className = 'form-control' placeholder = 'Add a task' value ={props.description} onChange = {props.handleChange}></input>
         </Grid>
 
 

@@ -26,16 +26,25 @@ input{
 
 .Center-text{
   text-align: center;
+  margin-top:100px
 }
 
 .Center{
-  margin-left: 270px
+  margin-left: 270px;
+  height: 30px;
 }
 
-button{
+
+.label{
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.button{
   width: 38%;
-  margin-left: 288px;
-  height: 30px;
+  padding: 5%;
+  margin-left: 282px;
+  margin-top: 20px;
 }
 
 img{

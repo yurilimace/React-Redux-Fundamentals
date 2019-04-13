@@ -23,6 +23,15 @@
   color: #61dafb;
 }
 
+#file{
+  
+  display: none;
+}
+
+#upload{
+  margin-top:8px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

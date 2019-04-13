@@ -4,9 +4,9 @@ import './index.css';
 import Route from './Routes/router'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faBook,faPlus,faTrash,faSearch} from '@fortawesome/free-solid-svg-icons'
+import { faBook,faPlus,faTrash,faSearch,faImage} from '@fortawesome/free-solid-svg-icons'
 
-library.add(faBook,faPlus,faTrash,faSearch)
+library.add(faBook,faPlus,faTrash,faSearch,faImage)
 
 
 ReactDOM.render(<Route />, document.getElementById('root'));

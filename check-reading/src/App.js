@@ -5,10 +5,10 @@ import Home from './Components/home'
 class App extends Component {
   constructor(props){
     super(props)
-    this.state = {name:'',pgr:'',list:[]}
+    this.state = {name:'',file:null,list:[]}
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
-
+    this.handleUpload = this.handleUpload.bind(this)
   }
 
   handleClick(){
@@ -20,13 +20,15 @@ class App extends Component {
     this.setState({...this.state,name:event.target.value})
   }
 
-
+  handleUpload(event){
+     this.setState({file:URL.createObjectURL(event.target.files[0])})
+  }
 
   render() {
     return (
       <div>
-        <Home handleClick = {this.handleClick} handleChange = {this.handleChange} name = {this.state.name}/>
-        <Table list ={this.state.list} />
+        <Home handleClick = {this.handleClick} handleChange = {this.handleChange} name = {this.state.name} upload={this.handleUpload}/>
+        <Table list ={this.state.list} img={this.state.file}/>
       </div>    
     );
   }

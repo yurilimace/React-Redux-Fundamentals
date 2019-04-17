@@ -1,20 +1,15 @@
 import React from 'react'
-import App from '../App';
 import Fileinput from './fileInput'
 export default props =>{
   
   const list = props.list || []
-  const src = props.img
   const row = ()=>{
     return(
       list.map((item,index) =>{
         return(
             <tr key={index}>
-              <td> {item} </td>
-              <td> <img src={src} height='250' width='200'/></td>
-              <td>
-                <Fileinput btn='btn btn-primary btn-sm' icon='image' for='file'></Fileinput>
-              </td>
+              <td> <img src={item[1]} height='250' width='200'/></td>
+              <td> {item[0]} </td>
             </tr>
         )
        }
@@ -28,8 +23,8 @@ export default props =>{
             <table className='table'>
               <thead>
               <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Status</th>
+                <th scope="col">Cover</th>
+                <th scope="col">Tittle</th>
               </tr>
               </thead>
               <tbody>

@@ -32,6 +32,10 @@
   margin-top:8px;
 }
 
+.cellsize{
+  width: 33.3%;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

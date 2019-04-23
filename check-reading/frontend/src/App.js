@@ -26,7 +26,7 @@ class App extends Component {
   handleUpload(event){
     let img = URL.createObjectURL(event.target.files[0])
     this.setState({file:img})
-    //set value of event to null(like a reset of input that select local image)
+     //set value of event to null(like a reset of input that select local image)
     event.target.value = null
     
   }

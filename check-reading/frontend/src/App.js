@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import './App.css'
+import axios from 'axios'
 import Table from './Components/table'
 import Home from './Components/home'
+import { Result } from 'range-parser';
+
+const URL = 'http://localhost:3005/api/check'
+
+
+
 
 class App extends Component {
   constructor(props){
@@ -17,6 +24,11 @@ class App extends Component {
   handleClick(){
     //changing state value list using spread operator
     this.setState({list:[...this.state.list,[this.state.name,this.state.file]],file:null})
+    let fd = new FormData()
+    fd.append('name',this.state.name)
+    fd.append('image',this.state.file)
+    //const config ={headers:{'Content-Type':'multipart/form-data'}}
+    axios.post(URL,fd).then(console.log('Book added'))
   }
 
   handleChange(event){
@@ -24,7 +36,7 @@ class App extends Component {
   }
 
   handleUpload(event){
-    let img = URL.createObjectURL(event.target.files[0])
+    let img = event.target.files[0]
     this.setState({file:img})
      //set value of event to null(like a reset of input that select local image)
     event.target.value = null

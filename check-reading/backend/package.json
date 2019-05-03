@@ -2,11 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "src/loader.js",
+  "main": "src/server.js",
   "scripts": {
     "dev": "nodemon",
     "production": "pm2 start src/loader.js --name check-reading"
-    
   },
   "keywords": [],
   "author": "",
@@ -15,10 +14,11 @@
     "body-parser": "1.15.2",
     "express": "4.14.0",
     "mongoose": "4.7.0",
+    "multer": "^1.4.1",
     "node-restful": "0.2.5",
     "pm2": "2.1.5"
   },
   "devDependencies": {
-    "nodemon": "1.11.0"
+    "nodemon": "^1.11.0"
   }
 }

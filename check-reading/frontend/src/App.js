@@ -21,24 +21,40 @@ class App extends Component {
     this.Refresh()
   }
 
-  
+
   Refresh(){
     axios.get(URL).then(response =>{  
-    this.setState({...this.state,list:response.data})
-    console.log(this.state.list[0].image.data.data)
-    
+    let list =[]
+    for(let i=0;i<response.data.length;i++){
+      if(response.data[i].image != null){
+        var teste =  btoa(String.fromCharCode.apply(null, new Uint8Array(response.data[i].image.data.data)))
+        //console.log(teste)
+        list.push({name:response.data[i].name,image:teste})
+      }
+      else{
+        list.push({name:response.data[i].name,image:null})
+      }
+    }
+    this.setState({...this.state,list:list})
+    console.log(list[0].image)
     })
   }
 
 
   handleClick(){
     //changing state value list using spread operator
-    this.setState({list:[...this.state.list,[this.state.name,this.state.file]],file:null})
-    let fd = new FormData()
-    fd.append('name',this.state.name)
-    fd.append('image',this.state.file)
+    if(this.state.file !==null){
+      this.setState({list:[...this.state.list,[this.state.name,this.state.file]],file:null})
+      let fd = new FormData()
+      fd.append('name',this.state.name)
+      fd.append('image',this.state.file)
     //const config ={headers:{'Content-Type':'multipart/form-data'}}
     //axios.post(URL,fd).then(console.log('Book added'))
+    }
+    else{
+      alert('Insira uma imagem')
+    }
+    
   }
 
   handleChange(event){

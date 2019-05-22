@@ -9,7 +9,7 @@ export default props =>{
       list.map((item,index) =>{
         return(
             <tr key={index} scope='row'>
-                <td  className='cellsize align-middle' align='center'> <span> <img  src={`data:image/png;base64,${item.img}`} height='250' width='200' /> </span> </td>
+                <td  className='cellsize align-middle' align='center'> <span> <img  src={`data:image/jpeg;base64,${item.image}`} height='250' width='200' /> </span> </td>
                 <td className='cellsize align-middle'align='center'> {item.name} </td>
                 <td className='cellsize align-middle' align='center'> 
                   <Button btn= 'btn btn-success btn-sm'  icon ='check' handleClick = {props.handleClick}></Button><br/>

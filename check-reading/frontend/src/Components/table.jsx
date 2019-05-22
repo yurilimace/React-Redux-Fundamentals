@@ -4,12 +4,13 @@ export default props =>{
   
   const list = props.list || []
   const row = ()=>{
+    let Flag = 'data:image/jpeg;'
     return(
       list.map((item,index) =>{
         return(
             <tr key={index} scope='row'>
-                <td  className='cellsize align-middle' align='center'> <span> <img  src={item[1]} height='250' width='200' /> </span> </td>
-                <td className='cellsize align-middle'align='center'> {item[0]} </td>
+                <td  className='cellsize align-middle' align='center'> <span> <img  src={`data:image/png;base64,${item.img}`} height='250' width='200' /> </span> </td>
+                <td className='cellsize align-middle'align='center'> {item.name} </td>
                 <td className='cellsize align-middle' align='center'> 
                   <Button btn= 'btn btn-success btn-sm'  icon ='check' handleClick = {props.handleClick}></Button><br/>
                   <Button btn= 'btn btn-danger btn-sm'  icon ='trash' handleClick = {props.handleClick}></Button><br/>

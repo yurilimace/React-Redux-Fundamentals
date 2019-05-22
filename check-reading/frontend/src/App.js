@@ -17,9 +17,19 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleUpload = this.handleUpload.bind(this)
+
+    this.Refresh()
   }
 
   
+  Refresh(){
+    axios.get(URL).then(response =>{  
+    this.setState({...this.state,list:response.data})
+    console.log(this.state.list[0].image.data.data)
+    
+    })
+  }
+
 
   handleClick(){
     //changing state value list using spread operator
@@ -28,7 +38,7 @@ class App extends Component {
     fd.append('name',this.state.name)
     fd.append('image',this.state.file)
     //const config ={headers:{'Content-Type':'multipart/form-data'}}
-    axios.post(URL,fd).then(console.log('Book added'))
+    //axios.post(URL,fd).then(console.log('Book added'))
   }
 
   handleChange(event){
@@ -37,6 +47,7 @@ class App extends Component {
 
   handleUpload(event){
     let img = event.target.files[0]
+    console.log(img)
     this.setState({file:img})
      //set value of event to null(like a reset of input that select local image)
     event.target.value = null

@@ -33,6 +33,7 @@ router.get('/check',function(req,res,next){
 })
 
 router.put('/check',upload.none(),function(req,res,next){
+    let query = null
     User.findOneAndUpdate({name:req.body.name},{name:req.body.upload},function(err,users){
         if(err){
             res.send('failed to update')
@@ -44,7 +45,7 @@ router.put('/check',upload.none(),function(req,res,next){
 })
 
 router.delete('/check',upload.none(),function(req,res,next){
-    User.findByIdAndDelete({name:req.body.name},function(err,users){
+    User.findOneAndRemove({name:req.body.name},function(err,users){
         if(err){
             res.send('cant be deleted')
         }

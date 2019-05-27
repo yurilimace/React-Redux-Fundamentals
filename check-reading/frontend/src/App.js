@@ -17,6 +17,8 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleUpload = this.handleUpload.bind(this)
+    this.handleRemove = this.handleRemove.bind(this)
+    //this.Refresh = this.Refresh.bind(this)
 
     this.Refresh()
   }
@@ -36,7 +38,7 @@ class App extends Component {
       }
     }
     this.setState({...this.state,list:list})
-    console.log(list[0].image)
+    //console.log(list[0].image)
     })
   }
 
@@ -49,10 +51,11 @@ class App extends Component {
       fd.append('name',this.state.name)
       fd.append('image',this.state.file)
     //const config ={headers:{'Content-Type':'multipart/form-data'}}
-    //axios.post(URL,fd).then(console.log('Book added'))
+    axios.post(URL,fd).then(response => this.Refresh())
+    this.Refresh()
     }
     else{
-      alert('Insira uma imagem')
+      alert('Please Select a image')
     }
     
   }
@@ -61,9 +64,15 @@ class App extends Component {
     this.setState({...this.state,name:event.target.value})
   }
 
+  handleRemove(item){
+    let fd = new FormData()
+    fd.append('name',item.name)
+    axios.delete(URL,{data:{name:item.name}}).then(response=> this.Refresh())
+  }
+
   handleUpload(event){
     let img = event.target.files[0]
-    console.log(img)
+    //console.log(img)
     this.setState({file:img})
      //set value of event to null(like a reset of input that select local image)
     event.target.value = null
@@ -74,7 +83,7 @@ class App extends Component {
     return (
       <div>
         <Home handleClick = {this.handleClick} handleChange = {this.handleChange} name = {this.state.name} upload ={this.handleUpload} />
-        <Table list ={this.state.list}/>
+        <Table list ={this.state.list} handleRemove = {this.handleRemove} />
       </div>    
     );
   }

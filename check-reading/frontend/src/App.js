@@ -20,6 +20,7 @@ class App extends Component {
     this.handleUpload = this.handleUpload.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
     this.handleFinished = this.handleFinished.bind(this)
+    this.handleMarkUnfinished = this.handleMarkUnfinished.bind(this)
     //this.Refresh = this.Refresh.bind(this)
 
     this.Refresh()
@@ -75,9 +76,13 @@ class App extends Component {
   handleFinished(item){
     let fd = new FormData()
     axios.put(URL,{name:item.name,update:true}).then(response=> this.Refresh() )
-    
-
   }
+
+  handleMarkUnfinished(item){
+    axios.put(URL,{name:item.name,update:false}).then(response=>this.Refresh())
+  }
+
+ 
 
   handleUpload(event){
     let img = event.target.files[0]
@@ -92,7 +97,7 @@ class App extends Component {
     return (
       <div>
         <Home handleClick = {this.handleClick} handleChange = {this.handleChange} name = {this.state.name} upload ={this.handleUpload} />
-        <Table list ={this.state.list} handleRemove = {this.handleRemove} handleFinished = {this.handleFinished} />
+        <Table list ={this.state.list} handleRemove = {this.handleRemove} handleFinished = {this.handleFinished} handleMarkUnfinished = {this.handleMarkUnfinished} />
       </div>    
     );
   }

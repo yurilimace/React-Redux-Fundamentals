@@ -10,10 +10,10 @@ export default props =>(
           <Navbar/>
         </Grid>
         <Grid columns = 'offset-3'>
-          <input className='col-xl-7'  placeholder ="Add a title that you gonna reading"  value = {props.name} onChange = {props.handleChange}></input>
+          <input className='col-xl-7 '  placeholder ="Add a title that you gonna reading"  value = {props.name} onChange = {props.handleChange}></input>
           <Button btn= 'btn btn-primary btn-sm'  icon ='plus' handleClick = {props.handleClick}></Button>
-          <Button btn='btn btn-danger btn-sm' icon = 'search'></Button>
-          <Fileinput btn='btn btn-primary btn-sm' icon='image' for='file' upload ={props.upload}></Fileinput>
+          <Fileinput btn='btn btn-primary btn-sm  label-size' icon='image' for='file' upload ={props.upload}></Fileinput>
+          <Button btn='btn btn-danger btn-sm ' icon = 'search'></Button>
         </Grid>
     </div>
 )

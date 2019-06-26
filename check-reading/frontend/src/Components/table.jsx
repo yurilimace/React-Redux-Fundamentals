@@ -22,9 +22,9 @@ export default props =>{
                 
                 {item.finished && (<td className='cellsize align-middle' align='center'>
                   
-                  <Button btn= 'btn btn-danger btn-sm'  icon ='trash'  handleClick = {()=>props.handleRemove(item)}  ></Button><br/>
-                  <Button btn= 'btn btn-info btn-sm'  icon ='thumbs-up' handleClick = {props.handleClick} ></Button><br/>
-                  <Button btn= 'btn btn-warning btn-sm'  icon ='undo'  handleClick = {props.handleClick} ></Button><br/>
+                  <Button btn= 'btn btn-danger btn-sm'  icon ='trash'  handleClick = {()=>props.handleRemove(item)}  ></Button>
+                  <Button btn= 'btn btn-info btn-sm'  icon ='thumbs-up' handleClick = {props.handleClick} ></Button>
+                  <Button btn= 'btn btn-warning btn-sm'  icon ='undo'  handleClick = {()=>props.handleMarkUnfinished(item)} ></Button>
 
                 </td>)}
             </tr>

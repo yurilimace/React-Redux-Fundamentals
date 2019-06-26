@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './buttons'
+import { toUnicode } from 'punycode';
 export default props =>{
   
   const list = props.list || []
@@ -11,12 +12,21 @@ export default props =>{
             <tr key={index} scope='row'>
                 <td  className='cellsize align-middle' align='center'> <span> <img  src={`data:image/jpeg;base64,${item.image}`} height='250' width='200' /> </span> </td>
                 <td className='cellsize align-middle'align='center'> {item.name} </td>
-                <td className='cellsize align-middle' align='center'> 
-                  <Button btn= 'btn btn-success btn-sm'  icon ='check' handleClick = {props.handleClick}></Button><br/>
-                  <Button btn= 'btn btn-danger btn-sm'  icon ='trash' handleClick = {()=>props.handleRemove(item)}></Button><br/>
-                  <Button btn= 'btn btn-info btn-sm'  icon ='thumbs-up' handleClick = {props.handleClick}></Button><br/>
-                  <Button btn= 'btn btn-warning btn-sm'  icon ='undo' handleClick = {props.handleClick}></Button><br/>
-                </td>
+                <td className='cellsize align-middle'align='center'> {item.finished} </td>
+                {!item.finished && (<td className='cellsize align-middle' align='center'>
+
+                  <Button btn= 'btn btn-success btn-sm'  icon ='check'  handleClick = {()=>props.handleFinished(item)}  ></Button>
+                  <br/>
+
+                </td>)}
+                
+                {item.finished && (<td className='cellsize align-middle' align='center'>
+                  
+                  <Button btn= 'btn btn-danger btn-sm'  icon ='trash'  handleClick = {()=>props.handleRemove(item)}  ></Button><br/>
+                  <Button btn= 'btn btn-info btn-sm'  icon ='thumbs-up' handleClick = {props.handleClick} ></Button><br/>
+                  <Button btn= 'btn btn-warning btn-sm'  icon ='undo'  handleClick = {props.handleClick} ></Button><br/>
+
+                </td>)}
             </tr>
         )
        }

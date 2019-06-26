@@ -4,6 +4,7 @@ import axios from 'axios'
 import Table from './Components/table'
 import Home from './Components/home'
 import { Result } from 'range-parser';
+import { request } from 'http';
 
 const URL = 'http://localhost:3005/api/check'
 
@@ -18,6 +19,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleUpload = this.handleUpload.bind(this)
     this.handleRemove = this.handleRemove.bind(this)
+    this.handleFinished = this.handleFinished.bind(this)
     //this.Refresh = this.Refresh.bind(this)
 
     this.Refresh()
@@ -30,11 +32,11 @@ class App extends Component {
     for(let i=0;i<response.data.length;i++){
       if(response.data[i].image != null){
         var teste =  btoa(String.fromCharCode.apply(null, new Uint8Array(response.data[i].image.data.data)))
-        //console.log(teste)
-        list.push({name:response.data[i].name,image:teste})
+        //console.log(response.data[i].finished)
+        list.push({name:response.data[i].name,image:teste,finished:response.data[i].finished})
       }
       else{
-        list.push({name:response.data[i].name,image:null})
+        list.push({name:response.data[i].name,image:null,finished:response.data[i].finished})
       }
     }
     this.setState({...this.state,list:list})
@@ -66,8 +68,15 @@ class App extends Component {
 
   handleRemove(item){
     let fd = new FormData()
-    fd.append('name',item.name)
+    //fd.append('name',item.name)
     axios.delete(URL,{data:{name:item.name}}).then(response=> this.Refresh())
+  }
+
+  handleFinished(item){
+    let fd = new FormData()
+    axios.put(URL,{name:item.name,update:true}).then(response=> this.Refresh() )
+    
+
   }
 
   handleUpload(event){
@@ -83,7 +92,7 @@ class App extends Component {
     return (
       <div>
         <Home handleClick = {this.handleClick} handleChange = {this.handleChange} name = {this.state.name} upload ={this.handleUpload} />
-        <Table list ={this.state.list} handleRemove = {this.handleRemove} />
+        <Table list ={this.state.list} handleRemove = {this.handleRemove} handleFinished = {this.handleFinished} />
       </div>    
     );
   }

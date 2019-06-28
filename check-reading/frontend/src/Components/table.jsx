@@ -3,7 +3,10 @@ import Button from './buttons'
 import { toUnicode } from 'punycode';
 export default props =>{
   
+  
+  
   const list = props.list || []
+  
   const row = ()=>{
     let Flag = 'data:image/jpeg;'
     return(

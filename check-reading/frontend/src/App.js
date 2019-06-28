@@ -21,6 +21,7 @@ class App extends Component {
     this.handleRemove = this.handleRemove.bind(this)
     this.handleFinished = this.handleFinished.bind(this)
     this.handleMarkUnfinished = this.handleMarkUnfinished.bind(this)
+    this.handleFilter = this.handleFilter.bind(this)
     //this.Refresh = this.Refresh.bind(this)
 
     this.Refresh()
@@ -65,6 +66,9 @@ class App extends Component {
 
   handleChange(event){
     this.setState({...this.state,name:event.target.value})
+    if(event.target.value==''){
+      this.Refresh()
+    }
   }
 
   handleRemove(item){
@@ -82,7 +86,11 @@ class App extends Component {
     axios.put(URL,{name:item.name,update:false}).then(response=>this.Refresh())
   }
 
- 
+ handleFilter(event){
+   let list = this.state.list
+   let filtred_list = list.filter((item)=>{return item.name.indexOf(this.state.name) !== -1 })
+   this.setState({...this.state,list:filtred_list})
+ }
 
   handleUpload(event){
     let img = event.target.files[0]
@@ -93,11 +101,11 @@ class App extends Component {
     
   }
 
-  render() {
+  render() { 
     return (
       <div>
-        <Home handleClick = {this.handleClick} handleChange = {this.handleChange} name = {this.state.name} upload ={this.handleUpload} />
-        <Table list ={this.state.list} handleRemove = {this.handleRemove} handleFinished = {this.handleFinished} handleMarkUnfinished = {this.handleMarkUnfinished} />
+        <Home handleClick = {this.handleClick} handleChange = {this.handleChange} name = {this.state.name} upload ={this.handleUpload} handleFilter={this.handleFilter} />
+        <Table search = {this.state.name} list ={this.state.list} handleRemove = {this.handleRemove} handleFinished = {this.handleFinished} handleMarkUnfinished = {this.handleMarkUnfinished} />
       </div>    
     );
   }

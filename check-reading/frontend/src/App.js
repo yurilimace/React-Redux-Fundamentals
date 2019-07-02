@@ -3,8 +3,7 @@ import './App.css'
 import axios from 'axios'
 import Table from './Components/table'
 import Home from './Components/home'
-import { Result } from 'range-parser';
-import { request } from 'http';
+
 
 const URL = 'http://localhost:3005/api/check'
 
@@ -66,19 +65,16 @@ class App extends Component {
 
   handleChange(event){
     this.setState({...this.state,name:event.target.value})
-    if(event.target.value==''){
+    if(event.target.value ===''){
       this.Refresh()
     }
   }
 
   handleRemove(item){
-    let fd = new FormData()
-    //fd.append('name',item.name)
     axios.delete(URL,{data:{name:item.name}}).then(response=> this.Refresh())
   }
 
   handleFinished(item){
-    let fd = new FormData()
     axios.put(URL,{name:item.name,update:true}).then(response=> this.Refresh() )
   }
 

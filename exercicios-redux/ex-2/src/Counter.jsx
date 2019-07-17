@@ -16,17 +16,19 @@ class App extends Component{
     }
 }
 //map state values to component props
-function mapStatetoProps(state){
-    return{
-        number:state.counter.number,
-        step:state.counter.step
-    }
-}
+
+const mapStatetoProps = (state) => ({
+    number:state.counter.number,
+    step:state.counter.step
+})
+
+
+const mapDispatchToProps = (dispatch) => (
+    bindActionCreators({Inc,Dec,Change},dispatch)
+)
 
 //map actions to component props 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({Inc,Dec,Change},dispatch)
-}
+
 
 
 export default connect(mapStatetoProps,mapDispatchToProps)(App)

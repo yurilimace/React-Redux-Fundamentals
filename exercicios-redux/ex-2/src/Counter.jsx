@@ -22,12 +22,12 @@ const mapStatetoProps = (state) => ({
     step:state.counter.step
 })
 
-
+//map actions to component props
 const mapDispatchToProps = (dispatch) => (
     bindActionCreators({Inc,Dec,Change},dispatch)
 )
 
-//map actions to component props 
+ 
 
 
 

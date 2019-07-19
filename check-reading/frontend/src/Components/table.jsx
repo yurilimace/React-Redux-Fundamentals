@@ -1,6 +1,9 @@
 import React from 'react'
 import Button from './buttons'
-export default props =>{
+
+import {connect} from 'react-redux'
+
+const table =  props =>{
   
   
   
@@ -52,3 +55,8 @@ export default props =>{
         </div>
     )
 }
+
+const mapStatetoProps = state =>({list:state.book.list})
+
+export default connect(mapStatetoProps)(table)
+

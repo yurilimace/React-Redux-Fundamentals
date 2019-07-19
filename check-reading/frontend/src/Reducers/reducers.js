@@ -1,16 +1,8 @@
 import {combineReducers} from 'redux'
+import bookReducer from './bookReducer'
+
 
 const rootReducer = combineReducers({
-    book:()=>({
-        name:'Nbook',
-        list:[{
-            name:'Nbook1',
-            finished:true
-        },{
-            name:'Nbook2',
-            finished:false
-        }]
-    })
+    book:bookReducer
 })
-
 export default rootReducer

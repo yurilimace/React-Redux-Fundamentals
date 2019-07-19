@@ -21,7 +21,6 @@ class App extends Component {
     this.handleFinished = this.handleFinished.bind(this)
     this.handleMarkUnfinished = this.handleMarkUnfinished.bind(this)
     this.handleFilter = this.handleFilter.bind(this)
-    //this.Refresh = this.Refresh.bind(this)
 
     this.Refresh()
   }
@@ -33,7 +32,6 @@ class App extends Component {
     for(let i=0;i<response.data.length;i++){
       if(response.data[i].image != null){
         var teste =  btoa(String.fromCharCode.apply(null, new Uint8Array(response.data[i].image.data.data)))
-        //console.log(response.data[i].finished)
         list.push({name:response.data[i].name,image:teste,finished:response.data[i].finished})
       }
       else{

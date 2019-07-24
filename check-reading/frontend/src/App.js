@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import './App.css'
 import axios from 'axios'
+
+import{connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+
+import{refresh} from './Actions/bookActions'
+
+
 import Table from './Components/table'
 import Home from './Components/home'
 
@@ -25,6 +32,9 @@ class App extends Component {
     this.Refresh()
   }
 
+  componentWillMount(){
+    this.props.refresh()
+  }
 
   Refresh(){
     axios.get(URL).then(response =>{  
@@ -105,4 +115,11 @@ class App extends Component {
   }
 }
 
-export default App;
+
+const MapDispatchtoProps = dispatch =>(
+   bindActionCreators({refresh},dispatch)
+)
+
+//connect must have contain the mapStatetoProps if don´t,use  null instead
+
+export default connect(null,MapDispatchtoProps)(App)

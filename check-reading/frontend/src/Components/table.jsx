@@ -11,11 +11,12 @@ const table =  props =>{
   
   const row = ()=>{
     let Flag = 'data:image/jpeg;base64'
+    //`${Flag},${item.image}`//
     return(
       list.map((item,index) =>{
         return(
             <tr key={index}>
-                <td  className='cellsize align-middle' align='center'> <span> <img  src={`${Flag},${item.image}`} alt={"tittle cover"} height='250' width='200' /> </span> </td>
+                <td  className='cellsize align-middle' align='center'> <span> <img  src={item.image} alt={"tittle cover"} height='250' width='200' /> </span> </td>
                 <td className='cellsize align-middle'align='center'> {item.name} </td>
                 {!item.finished && (<td className='cellsize align-middle' align='center'>
                   <Button btn= 'btn btn-success btn-sm'  icon ='check'  handleClick = {()=>props.handleFinished(item)}  ></Button>

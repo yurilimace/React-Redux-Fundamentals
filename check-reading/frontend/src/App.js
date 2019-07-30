@@ -109,7 +109,7 @@ class App extends Component {
     return (
       <div>
         <Home handleClick = {this.handleClick} handleChange = {this.handleChange} name = {this.state.name} upload ={this.handleUpload} handleFilter={this.handleFilter} />
-        <Table search = {this.state.name} list ={this.state.list} handleRemove = {this.handleRemove} handleFinished = {this.handleFinished} handleMarkUnfinished = {this.handleMarkUnfinished} />
+        <Table  />
       </div>    
     );
   }

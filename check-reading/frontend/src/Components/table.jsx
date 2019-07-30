@@ -1,34 +1,44 @@
-import React from 'react'
+import React,{Component} from 'react'
 import Button from './buttons'
+
+import {refresh} from '../Actions/bookActions'
+import {bindActionCreators} from 'redux'
 
 import {connect} from 'react-redux'
 
-const table =  props =>{
+
+ const table =  props =>{
   
   
   
-  const list = props.list || []
+  let list = props.list || []
+
+  console.log(props.search)
+
+  if(props.search === true){
+   list = list.filter((item)=>{return item.name.indexOf(props.name) !== -1 })
+  }
   
   const row = ()=>{
     let Flag = 'data:image/jpeg;base64'
-    //`${Flag},${item.image}`//
+    // `${Flag},${item.image}`//
     return(
       list.map((item,index) =>{
         return(
             <tr key={index}>
-                <td  className='cellsize align-middle' align='center'> <span> <img  src={item.image} alt={"tittle cover"} height='250' width='200' /> </span> </td>
+                <td  className='cellsize align-middle' align='center'> <span> <img  src={ `${Flag},${item.image}`} alt={"tittle cover"} height='250' width='200' /> </span> </td>
                 <td className='cellsize align-middle'align='center'> {item.name} </td>
                 {!item.finished && (<td className='cellsize align-middle' align='center'>
-                  <Button btn= 'btn btn-success btn-sm'  icon ='check'  handleClick = {()=>props.handleFinished(item)}  ></Button>
+                  <Button btn= 'btn btn-success btn-sm'  icon ='check'  handleClick = {()=>this.props.handleFinished(item)}  ></Button>
                   <br/>
 
                 </td>)}
                 
                 {item.finished && (<td className='cellsize align-middle' align='center'>
                   
-                  <Button btn= 'btn btn-danger btn-sm'  icon ='trash'  handleClick = {()=>props.handleRemove(item)}  ></Button>
-                  <Button btn= 'btn btn-info btn-sm'  icon ='thumbs-up' handleClick = {props.handleClick} ></Button>
-                  <Button btn= 'btn btn-warning btn-sm'  icon ='undo'  handleClick = {()=>props.handleMarkUnfinished(item)} ></Button>
+                  <Button btn= 'btn btn-danger btn-sm'  icon ='trash'  handleClick = {()=>this.props.handleRemove(item)}  ></Button>
+                  <Button btn= 'btn btn-info btn-sm'  icon ='thumbs-up' handleClick = {this.props.handleClick} ></Button>
+                  <Button btn= 'btn btn-warning btn-sm'  icon ='undo'  handleClick = {()=>this.props.handleMarkUnfinished(item)} ></Button>
 
                 </td>)}
             </tr>
@@ -55,9 +65,10 @@ const table =  props =>{
             </table>
         </div>
     )
-}
+} 
 
-const mapStatetoProps = state =>({list:state.book.list})
+const mapStatetotProps = state =>({list:state.book.list,search:state.book.search,name:state.book.name})
 
-export default connect(mapStatetoProps)(table)
+
+export default connect(mapStatetotProps)(table)
 

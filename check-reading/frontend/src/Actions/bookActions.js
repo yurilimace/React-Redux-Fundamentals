@@ -3,8 +3,10 @@ import axios from 'axios'
 const URL = 'http://localhost:3005/api/check'
 
 
-export const refresh = () =>{
-    const request = axios.get(URL)
+
+export const  refresh = async () =>{
+    const request = await axios.get(URL)
+    //console.log(request)
     return{
         type:'REFRESH',
         payload:request
@@ -12,10 +14,15 @@ export const refresh = () =>{
 }
 
 
-export const changeName = (event) =>({
-    type:'NAME_CHANGED',
-    payload:event.target.value
-})
+
+
+
+export const changeName = (event) =>{ 
+    return{
+        type:'NAME_CHANGED',
+        payload:[event.target.value]
+    }
+}
 
 export const upload = (event) =>({
     type:'UPLOAD_DONE',
@@ -43,8 +50,10 @@ export const addBook = (name,file) =>{
     let fd = new FormData()
     fd.append("name",name)
     fd.append("image",file)
+    console.log(file)
     return dispatch =>{
         axios.post(URL,fd)
             .then(resp => dispatch({type:'BOOK_ADD',payload:resp.data}))
+            .then(resp => dispatch(refresh()))
     }
 }

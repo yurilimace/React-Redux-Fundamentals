@@ -57,3 +57,32 @@ export const addBook = (name,file) =>{
             .then(resp => dispatch(refresh()))
     }
 }
+
+
+export const remove = (item) => {
+    return dispatch => {
+        axios.delete(URL,{data:{name:item.name}})
+        .then(resp => dispatch({type:'DELETE',payload:resp.data}))
+        .then(resp =>dispatch(refresh()))
+    }
+
+}
+
+export const finish =(item) => {
+    return dispatch =>{
+        axios.put(URL,{name:item.name,update:true})
+        .then(resp => dispatch({type:'FINISH',payload:resp.data}))
+        .then(resp => dispatch(refresh()))
+    }
+
+}
+
+export const unfinish = (item) => {
+    return dispatch => {
+        axios.put(URL,{name:item.name,update:false})
+        .then(resp => dispatch({type:'UNFINISH',payload:resp.data}))
+        .then(resp => dispatch(refresh()))
+    }
+
+}
+

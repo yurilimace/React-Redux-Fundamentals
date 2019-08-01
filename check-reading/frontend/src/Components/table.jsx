@@ -1,8 +1,10 @@
 import React,{Component} from 'react'
 import Button from './buttons'
 
-import {refresh} from '../Actions/bookActions'
+import {refresh,finish,unfinish,remove} from '../Actions/bookActions'
 import {bindActionCreators} from 'redux'
+
+
 
 import {connect} from 'react-redux'
 
@@ -29,16 +31,16 @@ import {connect} from 'react-redux'
                 <td  className='cellsize align-middle' align='center'> <span> <img  src={ `${Flag},${item.image}`} alt={"tittle cover"} height='250' width='200' /> </span> </td>
                 <td className='cellsize align-middle'align='center'> {item.name} </td>
                 {!item.finished && (<td className='cellsize align-middle' align='center'>
-                  <Button btn= 'btn btn-success btn-sm'  icon ='check'  handleClick = {()=>this.props.handleFinished(item)}  ></Button>
+                  <Button btn= 'btn btn-success btn-sm'  icon ='check'  handleClick = {()=>props.finish(item)}  ></Button>
                   <br/>
 
                 </td>)}
                 
                 {item.finished && (<td className='cellsize align-middle' align='center'>
                   
-                  <Button btn= 'btn btn-danger btn-sm'  icon ='trash'  handleClick = {()=>this.props.handleRemove(item)}  ></Button>
-                  <Button btn= 'btn btn-info btn-sm'  icon ='thumbs-up' handleClick = {this.props.handleClick} ></Button>
-                  <Button btn= 'btn btn-warning btn-sm'  icon ='undo'  handleClick = {()=>this.props.handleMarkUnfinished(item)} ></Button>
+                  <Button btn= 'btn btn-danger btn-sm'  icon ='trash'  handleClick = {()=>props.remove(item)}  ></Button>
+                  <Button btn= 'btn btn-info btn-sm'  icon ='thumbs-up'  ></Button>
+                  <Button btn= 'btn btn-warning btn-sm'  icon ='undo'  handleClick = {()=>props.unfinish(item)} ></Button>
 
                 </td>)}
             </tr>
@@ -69,6 +71,9 @@ import {connect} from 'react-redux'
 
 const mapStatetotProps = state =>({list:state.book.list,search:state.book.search,name:state.book.name})
 
+const mapDispatchtoProps = dispatch => (
+  bindActionCreators({finish,unfinish,remove},dispatch)
+)
 
-export default connect(mapStatetotProps)(table)
+export default connect(mapStatetotProps,mapDispatchtoProps)(table)
 

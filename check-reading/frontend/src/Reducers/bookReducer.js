@@ -14,7 +14,6 @@ export default (state = INITIAL_STATE,action) =>{
         case 'UPLOAD_DONE':
             return{...state,image:action.payload}
 
-
         case 'SEARCH':
             return{...state,search:true}
         
@@ -28,7 +27,15 @@ export default (state = INITIAL_STATE,action) =>{
             })
             console.log(action.payload.data)
             return {...state,list:action.payload.data}
+        
+        case 'FINISH':
+            return{...state,name:state.name}
+        
+        case 'UNFINISH' :
+            return{...state,name:state.name}
 
+        case 'DELETE':
+            return{...state,name:state.name}
 
         default:
             return state
